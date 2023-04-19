@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ServerApp</string>
+    <string name="data_received">Data Received</string>
+    <string name="send_a_message">Send a Message back to client</string>
+    <string name="enter_a_message">Enter a Message</string>
+    <string name="send">Send</string>
+</resources>
