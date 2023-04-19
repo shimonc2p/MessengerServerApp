@@ -20,9 +20,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.serverapp.model.Client;
-import com.example.serverapp.model.RecentClient;
-
 public class IPCServerService extends Service {
 
     private final IncomingHandler incomingHandler = new IncomingHandler();
@@ -45,15 +42,6 @@ public class IPCServerService extends Service {
             incomingHandlerMessenger = msg.replyTo;
 
             String clientData = msg.getData().getString(DATA);
-
-            // Get message from client. Save recent connected client info.
-            Bundle receivedBundle = msg.getData();
-            RecentClient.client = new Client(
-                    receivedBundle.getString(PACKAGE_NAME),
-                    String.valueOf(receivedBundle.getInt(PID)),
-                    receivedBundle.getString(DATA),
-                    "Messenger"
-            );
 
             if (!clientData.equals(GOT_IT)){
                 replyToRemoteClient(GOT_IT);
@@ -140,7 +128,6 @@ public class IPCServerService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        RecentClient.client = null;
         return super.onUnbind(intent);
     }
 }
